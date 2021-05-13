@@ -44,6 +44,8 @@ public class Utente
         codiceIdentificativo=0;
         nome="";
         cognome="";
+        accesso=LocalDateTime.now();
+        uscita=LocalDateTime.now();
     }
 
     public int getCodiceIdentificativo() 

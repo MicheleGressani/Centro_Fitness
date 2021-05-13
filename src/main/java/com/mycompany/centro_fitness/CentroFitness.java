@@ -20,6 +20,14 @@ public class CentroFitness
         elencoUtenti=new Utente[N_MAX_UTENTI];
         nUtentiPresenti=0;
     }
+    
+    public CentroFitness(CentroFitness c)
+    {
+        elencoUtenti=new Utente[N_MAX_UTENTI];
+        
+        for(int i=0;i<getN_MAX_UTENTI();i++)
+            elencoUtenti[i]=c.getUtente(i);
+    }
 
     public int getNUtentiPresenti() 
     {
@@ -38,6 +46,14 @@ public class CentroFitness
         elencoUtenti[nUtentiPresenti]=new Utente(utente);
         nUtentiPresenti++;
         return 0;         
+    }
+    
+    public Utente getUtente(int posizione)
+    {
+        if (elencoUtenti[posizione]!=null)
+            return new Utente(elencoUtenti[posizione]);
+        else
+            return null;
     }
     
     

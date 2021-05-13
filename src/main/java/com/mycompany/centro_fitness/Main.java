@@ -5,6 +5,8 @@
  */
 package com.mycompany.centro_fitness;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.*;
 import java.util.Scanner;
 
@@ -47,6 +49,9 @@ public class Main
                         utente.setNome(tastiera.nextLine());
                         System.out.println("Cognome --> ");
                         utente.setCognome(tastiera.nextLine());
+                        System.out.println("Data--> ");
+                        utente.setAccesso();
+                        
                     }
                 }
             }
