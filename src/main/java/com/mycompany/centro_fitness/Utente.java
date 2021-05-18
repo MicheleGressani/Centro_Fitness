@@ -34,7 +34,7 @@ public class Utente
         codiceIdentificativo=u.getCodiceIdentificativo();
         nome=u.getNome();
         cognome=u.getCognome();
-        
+        accesso=u.getAccesso();
     }
     public Utente()
     {
@@ -81,11 +81,7 @@ public class Utente
     
     public void setAccesso(int giorno,int mese, int anno, int ora, int minuto)
     {
-        accesso=accesso.withYear(anno);
-        accesso=accesso.withMonth(mese);
-        accesso=accesso.withDayOfMonth(giorno);
-        accesso=accesso.withHour(ora);
-        accesso=accesso.withMinute(minuto);
+        accesso=LocalDateTime.of(anno, mese, giorno, ora, minuto);
     }
     
     public String toString()

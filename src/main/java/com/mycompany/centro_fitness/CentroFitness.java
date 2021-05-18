@@ -55,7 +55,7 @@ public class CentroFitness
             if (elencoUtenti[i]!=null)
             {
                 u=elencoUtenti[i];
-                if (u.getNome()==nome && u.getCognome()==cognome)
+                if (nome.compareToIgnoreCase(elencoUtenti[i].getNome())==0 && cognome.compareToIgnoreCase(elencoUtenti[i].getCognome())==0)
                 {
                     return new Utente(u);
                 }
@@ -72,7 +72,7 @@ public class CentroFitness
             if (elencoUtenti[i]!=null)
             {
                 u=elencoUtenti[i];
-                if (u.getNome()==nome && u.getAccesso()==accesso)
+                if (nome.compareToIgnoreCase(elencoUtenti[i].getNome())==0 && accesso.equals(elencoUtenti[i].getAccesso()))
                 {
                     aggiornaPosizioneAccesso(i);
                     return 0; 
@@ -92,22 +92,6 @@ public class CentroFitness
         nUtentiPresenti--;
     }
     
-    public String elencoUtenti()
-    {
-        String s="";
-        Utente utente;
-        if (nUtentiPresenti==0)
-            s+="Nessun utente presente";
-        else
-        {
-            for (int i=0;i<nUtentiPresenti;i++)
-            {
-                utente=elencoUtenti[i];
-                s+=utente.toString()+"\n";
-            }
-        }
-        return s;
-            
-    }
+    
     
 }

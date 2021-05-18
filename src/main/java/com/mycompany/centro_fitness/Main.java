@@ -35,7 +35,7 @@ public class Main
         vociMenu[0]="Chiudi applicazione";
         vociMenu[1]="Aggiungi accesso utente";
         vociMenu[2]="Elimina accesso";
-        vociMenu[3]="Visualizza tutti gli accessi inserendo nome e cognome";
+        vociMenu[3]="Visualizza la data di presenza di uno specifico utente";
         
         Menu menu=new Menu(vociMenu);
         
@@ -54,10 +54,10 @@ public class Main
                     case 1:
                     {
                         System.out.println("Inserisci i dati dello studente");
-                        System.out.println("Cognome --> ");
-                        cognome=tastiera.nextLine();
                         System.out.println("Nome --> ");
                         nome=tastiera.nextLine();
+                        System.out.println("Cognome --> ");
+                        cognome=tastiera.nextLine();
                         System.out.println("DATA\n");                        
                         System.out.println("Giorno--> ");
                         giorno=tastiera.nextInt();
@@ -84,9 +84,10 @@ public class Main
                     }
                     case 2:
                     {
+                        tastiera.nextLine();
                         System.out.println("Inserisci il nome dell'utente");
                         nome=tastiera.nextLine();
-                        nome=tastiera.nextLine();
+                        
                         System.out.println("\nInserisci la data di accesso");
                         System.out.println("Data: ");
                         System.out.println("Minuto--> ");
@@ -110,22 +111,21 @@ public class Main
                     
                     case 3:
                     {
-                        /*
+                        tastiera.nextLine();
                         System.out.println("Inserisci il nome dell'Utente");
                         nome=tastiera.nextLine();
-                        nome=tastiera.nextLine();
+                        
                         System.out.println("Inserisci il cognome dell'Utente");
                         cognome=tastiera.nextLine();
                         utente=c1.getUtente(nome, cognome);
                         if (utente==null)
-                            System.out.println("Utente non presente");
+                            System.out.println("\nUtente non presente");
                         else
                         {
-                            System.out.println("Utente: "+utente.toString());
+                            System.out.println("UTENTE\n"+utente.toString());
                             tastiera.nextLine();
                             System.out.println(utente.getAccesso().toString());
-                        }*/
-                        System.out.println(c1.elencoUtenti());
+                        }
                         
                         break;
                     }
