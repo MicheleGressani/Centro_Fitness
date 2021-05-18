@@ -5,8 +5,7 @@
  */
 package com.mycompany.centro_fitness;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 
 /**
  *
@@ -28,7 +27,6 @@ public class Utente
         this.nome=nome;
         this.cognome=cognome;
         accesso=LocalDateTime.of(anno,mese,giorno,ora,minuto);
-        uscita=null;
     }
     
     public Utente(Utente u)
@@ -36,16 +34,14 @@ public class Utente
         codiceIdentificativo=u.getCodiceIdentificativo();
         nome=u.getNome();
         cognome=u.getCognome();
-        accesso=u.getAccesso();
-        uscita=u.getUscita();
+        
     }
     public Utente()
     {
         codiceIdentificativo=0;
         nome="";
         cognome="";
-        accesso=LocalDateTime.now();
-        uscita=LocalDateTime.now();
+        LocalDateTime.now();
     }
 
     public int getCodiceIdentificativo() 
@@ -77,24 +73,26 @@ public class Utente
     {
         this.cognome=cognome;
     }
-
-    public LocalDateTime getAccesso() 
+    
+    public LocalDateTime getAccesso()
     {
         return accesso;
     }
-
-    public void setAccesso(LocalDateTime accesso) 
+    
+    public void setAccesso(int giorno,int mese, int anno, int ora, int minuto)
     {
-        this.accesso=accesso;
+        accesso=accesso.withYear(anno);
+        accesso=accesso.withMonth(mese);
+        accesso=accesso.withDayOfMonth(giorno);
+        accesso=accesso.withHour(ora);
+        accesso=accesso.withMinute(minuto);
+    }
+    
+    public String toString()
+    {
+        String s;
+        s="ID--> "+getCodiceIdentificativo()+"\nNome--> "+getNome()+"\nCognome--> "+getCognome()+"\nData--> "+getAccesso();
+        return s;
     }
 
-    public LocalDateTime getUscita() 
-    {
-        return uscita;
-    }
-
-    public void setUscita(LocalDateTime uscita) 
-    {
-        this.uscita=uscita;
-    }    
 }
