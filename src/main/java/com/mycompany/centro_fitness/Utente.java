@@ -27,6 +27,7 @@ public class Utente
         this.nome=nome;
         this.cognome=cognome;
         accesso=LocalDateTime.of(anno,mese,giorno,ora,minuto);
+        uscita=null;
     }
     
     public Utente(Utente u)
@@ -35,13 +36,15 @@ public class Utente
         nome=u.getNome();
         cognome=u.getCognome();
         accesso=u.getAccesso();
+        uscita=u.getUscita();
     }
     public Utente()
     {
         codiceIdentificativo=0;
         nome="";
         cognome="";
-        LocalDateTime.now();
+        accesso=LocalDateTime.now();
+        uscita=LocalDateTime.now();
     }
 
     public int getCodiceIdentificativo() 
@@ -84,10 +87,20 @@ public class Utente
         accesso=LocalDateTime.of(anno, mese, giorno, ora, minuto);
     }
     
+    public LocalDateTime getUscita()
+    {
+        return uscita;
+    }
+    
+    public void setUscita(int giornoU,int meseU, int annoU, int oraU, int minutoU)
+    {
+        uscita=LocalDateTime.of(annoU, meseU, giornoU, oraU, minutoU);
+    }
+    
     public String toString()
     {
         String s;
-        s="ID--> "+getCodiceIdentificativo()+"\nNome--> "+getNome()+"\nCognome--> "+getCognome()+"\nData--> "+getAccesso();
+        s="ID--> "+getCodiceIdentificativo()+"\nNome--> "+getNome()+"\nCognome--> "+getCognome()+"\nData Entrata--> "+getAccesso()+"\nData Uscita--> "+getUscita();
         return s;
     }
 

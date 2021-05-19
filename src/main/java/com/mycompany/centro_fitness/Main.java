@@ -5,8 +5,7 @@
  */
 package com.mycompany.centro_fitness;
 
-import java.time.LocalDateTime;
-import java.time.Month;
+import java.time.*;
 import java.util.*;
 import java.util.Scanner;
 
@@ -18,24 +17,28 @@ public class Main
 {
     public static void main(String[] args) 
     {
-        String[] vociMenu=new String[4];
+        String[] vociMenu=new String[6];
         int sceltaUtente=0;
         Scanner tastiera=new Scanner(System.in);
         CentroFitness c1=new CentroFitness();
         Utente utente;
-        CentroFitness CF;
         String nome;
         String cognome;
         LocalDateTime accesso=null;
-        int minuto,ora,giorno,mese,anno;
+        LocalDateTime uscita=null;
+        int giorno,mese,anno,ora,minuto;
+        int giornoU,meseU,annoU,oraU,minutoU;
         int esitoOperazione;
         int codiceIdentificativo=1;
+        int posizione;
         
         
         vociMenu[0]="Chiudi applicazione";
-        vociMenu[1]="Aggiungi accesso utente";
+        vociMenu[1]="Registra nuovo accesso";
         vociMenu[2]="Elimina accesso";
         vociMenu[3]="Visualizza la data di presenza di uno specifico utente";
+        vociMenu[4]="Registra uscita dell'utente";
+        vociMenu[5]="Visualizza tutti gli accessi di un determinato giorno in ordine alfabetico";
         
         Menu menu=new Menu(vociMenu);
         
@@ -53,6 +56,7 @@ public class Main
                     }
                     case 1:
                     {
+                        tastiera.nextLine();
                         System.out.println("Inserisci i dati dello studente");
                         System.out.println("Nome --> ");
                         nome=tastiera.nextLine();
@@ -120,6 +124,7 @@ public class Main
                         utente=c1.getUtente(nome, cognome);
                         if (utente==null)
                             System.out.println("\nUtente non presente");
+
                         else
                         {
                             System.out.println("UTENTE\n"+utente.toString());
@@ -129,6 +134,44 @@ public class Main
                         
                         break;
                     }
+                    
+                    case 4:
+                    {
+                        tastiera.nextLine();
+                        System.out.println("Inserisci il codice identificativo");
+                        codiceIdentificativo=tastiera.nextInt();
+                        utente=c1.getUtenteID(codiceIdentificativo);
+                        posizione=c1.getPosizione(codiceIdentificativo);
+                        if(posizione==-1)
+                            System.out.println("Utente non presente");
+
+                        else
+                        {
+
+                            System.out.println("Registra la data e ora di uscita di "+utente.getNome());
+
+                            System.out.println("UTENTE\n"+utente.toString());
+
+                            tastiera.nextLine();
+
+                            System.out.println("Giorno uscita--> ");
+                            minutoU=tastiera.nextInt();
+                            System.out.println("Mese uscita--> ");
+                            oraU=tastiera.nextInt();
+                            System.out.println("Anno uscita--> ");
+                            giornoU=tastiera.nextInt();
+                            System.out.println("Ora uscita--> ");
+                            meseU=tastiera.nextInt();
+                            System.out.println("Minuto uscita--> ");
+                            annoU=tastiera.nextInt();
+                            c1.assegnaData(codiceIdentificativo,annoU,meseU,giornoU,oraU,minutoU);
+                        }
+                    }
+                    
+                    case 5:
+                    {
+                            break;   
+                    }
                 }
             }
             catch(InputMismatchException | NumberFormatException el)
@@ -137,11 +180,5 @@ public class Main
                 System.out.println("Input non corretto");
             }
         }while(sceltaUtente!=0);
-        
-        
-        
-        
-        
-        
     }
 }
