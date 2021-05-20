@@ -124,7 +124,6 @@ public class Main
                         utente=c1.getUtente(nome, cognome);
                         if (utente==null)
                             System.out.println("\nUtente non presente");
-
                         else
                         {
                             System.out.println("UTENTE\n"+utente.toString());

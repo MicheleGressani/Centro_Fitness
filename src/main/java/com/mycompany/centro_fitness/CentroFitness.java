@@ -198,6 +198,3 @@ import java.time.*;
             nUtentiPresenti--;
         }
     }
-    
-    
-    
